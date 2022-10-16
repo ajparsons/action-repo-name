@@ -1,0 +1,22 @@
+name: 'Extract repo name'
+description: 'Extract repo name from user/repo'
+version: 0.0.1
+inputs:
+  github_repo: 
+    description: 'Github repo user/repo combination.'
+    required: true
+outputs:
+  repo_name:
+    description: "The repo of 'user/repo'."
+    value: ${{ steps.repo_name.outputs.repo_name }}
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Fetch repo name
+      id: repo_name
+      shell: bash
+      run: |
+        echo "repo_name=$(echo '${{ inputs.github_repo }}' | awk -F '/' '{print $2}')" >> $GITHUB_OUTPUT
+    
