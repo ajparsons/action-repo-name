@@ -1,6 +1,6 @@
 name: 'Extract repo name'
 description: 'Extract repo name from user/repo'
-version: 0.0.1
+version: 1.0.0
 inputs:
   github_repo: 
     description: 'Github repo user/repo combination.'
